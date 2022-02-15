@@ -2,12 +2,16 @@
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" type="text/css" media="all" th:href="@{/css/party.css}" href="/css/party.css"/>
+    <link rel="stylesheet" type="text/css" media="all" th:href="@{/css/party.css}" href="../static/css/party.css"/>
     <title>Homepagina</title>
 </head>
+<nav>
+    <h1>Homepagina</h1>
+    <a th:href="@{/about}">about</a>
+    <a th:href="@{/pay}">pay</a>
+    <a th:href="@{/venuedetails}">venuedetails</a>
+</nav>
 <body>
-<h1>Homepagina</h1>
-<a th:href="@{/about}">about</a>
 <p th:text="${myCalculatedValue}">onbekend nummer</p>
 </body>
 </html>

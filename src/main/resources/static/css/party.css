@@ -1,15 +1,9 @@
-h1 {
-    color: blue;
-}
-
-p {
-    color: blue;
-}
-
-ol {
-    color: blue;
-}
-
 body {
     background-color: black;
+    color: blue;
+}
+nav {
+    background-color: #6f9324;
+    padding-bottom: 20px;
+    padding-left: 20px;
 }
