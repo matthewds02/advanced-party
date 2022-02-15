@@ -5,12 +5,14 @@
     <link rel="stylesheet" type="text/css" media="all" th:href="@{/css/party.css}" href="../static/css/party.css"/>
     <title>About me</title>
 </head>
-<nav>
-    <h1>About me</h1>
-    <a th:href="@{/home}">Homepage</a>
-    <a th:href="@{/pay}">pay</a>
-    <a th:href="@{/venuedetails}">venuedetails</a>
-</nav>
+<header>
+    <nav>
+        <h1>About me</h1>
+        <a th:href="@{/home}">Homepage</a>
+        <a th:href="@{/pay}">pay</a>
+        <a th:href="@{/venuedetails}">venuedetails</a>
+    </nav>
+</header>
 <body>
 <ol><li><p th:text="${myName}">naam</p></li>
 <li><p th:text="${myStreet}">straat</p></li>
