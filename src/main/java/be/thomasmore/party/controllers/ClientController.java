@@ -18,6 +18,8 @@ public class ClientController {
     @Autowired
     private ClientRepository clientRepository;
 
+    String clientCode = "";
+
     @GetMapping("/client")
     public String greetingNewClient(Model model) {
 
@@ -49,19 +51,43 @@ public class ClientController {
             String namiddag = "goedenavond";
             model.addAttribute("middag", namiddag);
         }
+        generateClientCode();
 
         return "newClient";
+    }
+
+    @GetMapping("/secretCode")
+    public String showSecretCode(Model model) {
+
+        Optional<Client> optionalClient = clientRepository.findById(1);
+        if (optionalClient.isPresent()) {
+            model.addAttribute("client", optionalClient.get());
+        }
+
+        if (optionalClient.get().getGender().equals("M")) {
+            String gender = "Meneer";
+            model.addAttribute("gender", gender);
+        }
+        else {
+            String gender = "Mevrouw";
+            model.addAttribute("gender", gender);
+        }
+        model.addAttribute("code", clientCode);
+
+        return "showSecretCode";
     }
 
     public void generateClientCode() {
         Optional<Client> optionalClient = clientRepository.findById(1);
 
-        String eersteLetters = optionalClient.get().getClientName().substring(0, 2);
-        String laatsteLetters = optionalClient.get().getClientName().substring(1, 1);
+        String naam = optionalClient.get().getClientName();
+        String eersteLetters = naam.substring(0, 2);
+        String laatsteLetters = naam.substring(naam.length()-1);
         String geboortedag = optionalClient.get().getBirthdate().substring(0, 2);
 
-        Random rand = new Random();
+        /*Random rand = new Random();
         int birthdateToInt=Integer.parseInt(optionalClient.get().getBirthdate());
-        int int_random = rand.nextInt(birthdateToInt);
+        int int_random = rand.nextInt(birthdateToInt);*/
+        clientCode = eersteLetters + laatsteLetters + geboortedag;
     }
 }
