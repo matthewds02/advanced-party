@@ -63,6 +63,9 @@ public class ClientController {
         if (optionalClient.isPresent()) {
             model.addAttribute("client", optionalClient.get());
         }
+        else {
+            model.addAttribute("notFound", "deze klant kan niet gevonden worden");
+        }
 
         if (optionalClient.get().getGender().equals("M")) {
             String gender = "Meneer";
@@ -85,9 +88,10 @@ public class ClientController {
         String laatsteLetters = naam.substring(naam.length()-1);
         String geboortedag = optionalClient.get().getBirthdate().substring(0, 2);
 
-        /*Random rand = new Random();
-        int birthdateToInt=Integer.parseInt(optionalClient.get().getBirthdate());
-        int int_random = rand.nextInt(birthdateToInt);*/
-        clientCode = eersteLetters + laatsteLetters + geboortedag;
+        Random rand = new Random();
+        String geboortejaar = optionalClient.get().getBirthdate();
+        int birthdateToInt=Integer.parseInt(geboortejaar.substring(geboortejaar.length()-4));
+        int int_random = rand.nextInt(birthdateToInt);
+        clientCode = eersteLetters + laatsteLetters + geboortedag + int_random;
     }
 }
