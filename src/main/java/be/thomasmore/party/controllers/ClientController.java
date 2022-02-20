@@ -36,9 +36,6 @@ public class ClientController {
         }
 
         LocalDateTime now = LocalDateTime.now();
-        DateTimeFormatter format = DateTimeFormatter.ofPattern("hh:mm:ss");
-        String hour = now.format(format);
-        model.addAttribute("hour", hour);
         int test = now.getHour();
         if (test < 12) {
             String voormiddag = "goedemorgen";

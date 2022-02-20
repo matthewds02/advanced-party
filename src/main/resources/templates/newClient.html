@@ -11,7 +11,6 @@
     </nav>
 </header>
 <body>
-<p th:text="|Goedemorgen ${gender} ${client.getClientName()} |">Goedemorgen</p>
-<p th:text="| ${hour} ${middag}|"></p>
+<p th:text="|${middag} ${gender} ${client.getClientName()} |">Goedemorgen</p>
 </body>
 </html>
