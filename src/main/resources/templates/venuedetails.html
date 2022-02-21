@@ -26,10 +26,30 @@
             <div class="info">Info : </div>
             <p>Info: <a th:href="${venue.getLinkMoreInfo()}">website</a></p>
             <p th:text="|Capacity: ${venue.getCapacity()}|"></p>
-            <p th:text="|Food provided?: ${venue.getfoodProvided()}|"></p>
-            <p th:text="|Indoor?: ${venue.getindoor()}|"></p>
-            <p th:text="|Outdoor?: ${venue.getoutdoor()}|"></p>
-            <p th:text="|Free parking Available?: ${venue.getfreeParkingAvailable()}|"></p>
+            <div class="row1content" th:if="${venue.getfoodProvided()}">
+                <p>Food provided?: yes</p>
+            </div>
+            <div class="row1content" th:unless="${venue.getfoodProvided()}">
+                <p>Food provided?: no</p>
+            </div>
+            <div class="row1content" th:if="${venue.getindoor()}">
+                <p>Indoor?: yes</p>
+            </div>
+            <div class="row1content" th:unless="${venue.getindoor()}">
+                <p>Indoor?: no</p>
+            </div>
+            <div class="row1content" th:if="${venue.getoutdoor()}">
+                <p>Outdoor?: yes</p>
+            </div>
+            <div class="row1content" th:unless="${venue.getoutdoor()}">
+                <p>Outdoor?: no</p>
+            </div>
+            <div class="row1content" th:if="${venue.getfreeParkingAvailable()}">
+                <p>Free parking Available?: yes</p>
+            </div>
+            <div class="row1content" th:unless="${venue.getfreeParkingAvailable()}">
+                <p>Free parking Available?: no</p>
+            </div>
             <p th:text="|Distance Public Transport in km: ${venue.getDistanceFromPublicTransportInKm()}|"></p>
             <p th:text="|City: ${venue.getCity()}|"></p>
         </div>
