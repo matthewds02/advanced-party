@@ -33,7 +33,12 @@ ul li {
 }
 footer {
     font-size: 10px;
-    position: absolute;
+    position: inherit;
     bottom: 0;
     width: 80%;
+}
+
+a {
+    text-decoration: none;
+    color: blue;
 }

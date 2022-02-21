@@ -32,6 +32,10 @@ public class Venue {
     public Venue() {
     }
 
+    public Integer getId() {
+        return id;
+    }
+
     public String getVenueName() {
         return venueName;
     }
