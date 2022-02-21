@@ -6,14 +6,14 @@
     <title>Homepagina</title>
 </head>
 <header>
-    <h1>Venues</h1>
+    <h1>Artists</h1>
     <nav th:insert="fragments/header :: navbar">Hier komt de header</nav>
 </header>
 <body>
 <ul>
     <div th:each="artist: ${artists}">
         <li>
-            <a class="buttonLook mediumButton" th:href="@{|/artistlist/${artist.id}|}">
+            <a class="buttonLook mediumButton" th:href="@{|/artistdetails/${artist.id}|}">
                 <span th:text="${artist.getArtistName()}">venue name</span>
             </a>
         </li>
