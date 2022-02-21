@@ -6,15 +6,8 @@
     <title>About me</title>
 </head>
 <header>
-    <nav>
-        <h1>About me</h1>
-        <a th:href="@{/home}">Homepage</a>
-        <a th:href="@{/about}">about</a>
-        <a th:href="@{/pay}">pay</a>
-        <a th:href="@{/venuelist}">venues</a>
-        <a th:href="@{/client}">newClient</a>
-        <a th:href="@{/secretCode}">showSecretCode</a>
-    </nav>
+    <h1>About me</h1>
+    <nav th:insert="fragments/header :: navbar">Hier komt de header</nav>
 </header>
 <body>
 <ol><li><p th:text="${myName}">naam</p></li>
@@ -22,4 +15,5 @@
 <li><p th:text="${myCity}">gemeente</p></li></ol>
 <p th:text="|Ik ben ${myName} en woon in ${myStreet} te ${myCity}|"></p>
 </body>
+<footer th:insert="fragments/footer :: footer">Hier komt de footer</footer>
 </html>

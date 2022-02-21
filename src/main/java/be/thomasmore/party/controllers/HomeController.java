@@ -4,7 +4,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import java.time.LocalDateTime;
+import java.time.Month;
 import java.time.format.DateTimeFormatter;
+import java.time.DayOfWeek;
 
 @Controller
 public class HomeController {
@@ -36,6 +38,12 @@ public class HomeController {
         String betaalDatum = "De uiterste datum van betalen is " + formatFutureDateTime;
         model.addAttribute("dateToday", dateToday);
         model.addAttribute("betaalDatum", betaalDatum);
+        /* test a hardcoded date
+        LocalDateTime wekend = LocalDateTime.of(2022, Month.FEBRUARY, 27, 19, 30, 40);
+        (change     DayOfWeek d = now.getDayOfWeek();       to          DayOfWeek d = wekend.getDayOfWeek();)*/
+        DayOfWeek d = now.getDayOfWeek();
+        Boolean weekend = d == DayOfWeek.SATURDAY || d == DayOfWeek.SUNDAY;
+        model.addAttribute("weekend", weekend);
         return "pay";
     }
 }

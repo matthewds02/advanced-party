@@ -6,18 +6,18 @@
     <title>Pay</title>
 </head>
 <header>
-    <nav>
-        <h1>Pay</h1>
-        <a th:href="@{/home}">Homepage</a>
-        <a th:href="@{/about}">about</a>
-        <a th:href="@{/pay}">pay</a>
-        <a th:href="@{/venuelist}">venues</a>
-        <a th:href="@{/client}">newClient</a>
-        <a th:href="@{/secretCode}">showSecretCode</a>
-    </nav>
+    <h1>Pay</h1>
+    <nav th:insert="fragments/header :: navbar">Hier komt de header</nav>
 </header>
 <body>
 <p th:text="${dateToday}">datum</p>
 <p th:text="${betaalDatum}">betaal datum</p>
+<div class="row1content" th:if="${weekend}">
+    <p>Prettig weekend, je hebt het verdiend!</p>
+</div>
+<div class="row1content" th:unless="${weekend}">
+    <p>Voor je het weet is het weekend!</p>
+</div>
 </body>
+<footer th:insert="fragments/footer :: footer">Hier komt de footer</footer>
 </html>

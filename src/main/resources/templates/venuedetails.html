@@ -6,15 +6,8 @@
     <link rel="stylesheet" type="text/css" media="all" th:href="@{/css/party.css}" href="../static/css/party.css">
 </head>
 <header>
-    <nav>
-        <h1>Venue Details</h1>
-        <a th:href="@{/home}">Homepage</a>
-        <a th:href="@{/about}">about</a>
-        <a th:href="@{/pay}">pay</a>
-        <a th:href="@{/venuelist}">venues</a>
-        <a th:href="@{/client}">newClient</a>
-        <a th:href="@{/secretCode}">showSecretCode</a>
-    </nav>
+    <h1>Pay</h1>
+    <nav th:insert="fragments/header :: navbar">Hier komt de header</nav>
 </header>
 <body>
 <div class="row1">
@@ -59,4 +52,5 @@
     </div>
 </div>
 </body>
+<footer th:insert="fragments/footer :: footer">Hier komt de footer</footer>
 </html>
