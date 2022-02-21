@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" type="text/css" media="all" th:href="@{/css/party.css}" href="../static/css/party.css"/>
-    <title>About me</title>
+    <title>Homepagina</title>
 </head>
 <header>
     <nav>
-        <h1>About me</h1>
+        <h1>Homepagina</h1>
         <a th:href="@{/home}">Homepage</a>
         <a th:href="@{/about}">about</a>
         <a th:href="@{/pay}">pay</a>
@@ -17,9 +17,11 @@
     </nav>
 </header>
 <body>
-<ol><li><p th:text="${myName}">naam</p></li>
-<li><p th:text="${myStreet}">straat</p></li>
-<li><p th:text="${myCity}">gemeente</p></li></ol>
-<p th:text="|Ik ben ${myName} en woon in ${myStreet} te ${myCity}|"></p>
+<h2>Venues</h2>
+<ul>
+    <li><a th:href="@{/venuedetails/1}">venue 1</a></li>
+    <li><a th:href="@{/venuedetails/2}">venue 2</a></li>
+    <li><a th:href="@{/venuedetails/3}">venue 3</a></li>
+</ul>
 </body>
 </html>
