@@ -6,6 +6,7 @@ header {
     background-color: #6f9324;
     padding-bottom: 20px;
     padding-left: 20px;
+    margin-bottom: 20px;
 }
 nav a{
     background-color: #526c19;
@@ -41,4 +42,15 @@ footer {
 a {
     text-decoration: none;
     color: blue;
+}
+
+.outdoor {
+    display: inline-block;
+    background-color: #526c19;
+    margin-right: 10px;
+    padding: 10px;
+}
+
+.textbeforebutton {
+    display: inline;
 }

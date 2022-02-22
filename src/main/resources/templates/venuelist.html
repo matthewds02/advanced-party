@@ -10,6 +10,16 @@
     <nav th:insert="fragments/header :: navbar">Hier komt de header</nav>
 </header>
 <body>
+<p class="textbeforebutton">outdoor: </p>
+<a class="buttonLook outdoor" th:href="@{/venuelist/outdoor/yes}">
+    <span>yes</span>
+</a>
+<a class="buttonLook outdoor" th:href="@{/venuelist/outdoor/no}">
+    <span>no</span>
+</a>
+<a class="buttonLook outdoor" th:href="@{/venuelist}">
+    <span>all</span>
+</a>
 <ul>
     <div th:each="venue: ${venues}">
         <li>
