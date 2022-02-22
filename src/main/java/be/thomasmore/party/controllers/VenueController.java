@@ -38,16 +38,20 @@ public class VenueController {
         return "venuelist";
     }
 
-    /*@GetMapping("/venuelist/{antwoord}")
-    public String venueList(Model model, @PathVariable(required = false) String antwoord) {
-        Iterable<Venue> allVenues = venueRepository.findAll();
-        model.addAttribute("venues", allVenues);
-        return "venuelist";
-    }*/
-
     @GetMapping("/venuelist/outdoor/{antwoord}")
     public String venueListOutdoorYesNo(Model model, @PathVariable boolean antwoord) {
         Iterable<Venue> venues = venueRepository.findByOutdoor(antwoord);
+        String antwoordString = "" + antwoord;
+        model.addAttribute("antwoord1", antwoordString);
+        model.addAttribute("venues", venues);
+        return "venuelist";
+    }
+
+    @GetMapping("/venuelist/indoor/{antwoord}")
+    public String venueListIndoorYesNo(Model model, @PathVariable boolean antwoord) {
+        Iterable<Venue> venues = venueRepository.findByIndoor(antwoord);
+        String antwoordString = "" + antwoord;
+        model.addAttribute("antwoord2", antwoordString);
         model.addAttribute("venues", venues);
         return "venuelist";
     }

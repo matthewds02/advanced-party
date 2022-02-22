@@ -10,11 +10,32 @@
     <nav th:insert="fragments/header :: navbar">Hier komt de header</nav>
 </header>
 <body>
-<p class="textbeforebutton">outdoor: </p>
+<!--dit is mogelijk maar bij extra uitbreidingen krijg je een probleem dus kun je beter een parameter meegeven en gebruiken.
 <a class="baseclass" th:classappend="${#httpServletRequest.requestURI.endsWith('true')} ? 'adminclass'" th:href="@{|/venuelist/outdoor/${true}|}">
     <span>yes</span>
 </a>
 <a class="baseclass" th:classappend="${#httpServletRequest.requestURI.endsWith('false')} ? 'adminclass'" th:href="@{|/venuelist/outdoor/${false}|}">
+    <span>no</span>
+</a>
+<a class="baseclass" th:classappend="${#httpServletRequest.requestURI.endsWith('venuelist')} ? 'adminclass'" th:href="@{/venuelist}">
+    <span>all</span>
+</a>-->
+
+<p class="textbeforebutton">outdoor: </p>
+<a class="baseclass" th:classappend="${#httpServletRequest.requestURI.endsWith('outdoor/true')} ? 'adminclass'" th:href="@{|/venuelist/outdoor/${true}|}">
+    <span>yes</span>
+</a>
+<a class="baseclass" th:classappend="${#httpServletRequest.requestURI.endsWith('outdoor/false')} ? 'adminclass'" th:href="@{|/venuelist/outdoor/${false}|}">
+    <span>no</span>
+</a>
+<a class="baseclass" th:classappend="${#httpServletRequest.requestURI.endsWith('venuelist')} ? 'adminclass'" th:href="@{/venuelist}">
+    <span>all</span>
+</a>
+<p id="textindoorbutton" class="textbeforebutton">indoor: </p>
+<a class="baseclass" th:classappend="${#httpServletRequest.requestURI.endsWith('indoor/true')} ? 'adminclass'" th:href="@{|/venuelist/indoor/${true}|}">
+    <span>yes</span>
+</a>
+<a class="baseclass" th:classappend="${#httpServletRequest.requestURI.endsWith('indoor/false')} ? 'adminclass'" th:href="@{|/venuelist/indoor/${false}|}">
     <span>no</span>
 </a>
 <a class="baseclass" th:classappend="${#httpServletRequest.requestURI.endsWith('venuelist')} ? 'adminclass'" th:href="@{/venuelist}">
