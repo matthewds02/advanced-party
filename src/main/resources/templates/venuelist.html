@@ -11,13 +11,13 @@
 </header>
 <body>
 <p class="textbeforebutton">outdoor: </p>
-<a class="buttonLook outdoor" th:href="@{/venuelist/outdoor/yes}">
+<a class="baseclass" th:classappend="${#httpServletRequest.requestURI.endsWith('true')} ? 'adminclass'" th:href="@{|/venuelist/outdoor/${true}|}">
     <span>yes</span>
 </a>
-<a class="buttonLook outdoor" th:href="@{/venuelist/outdoor/no}">
+<a class="baseclass" th:classappend="${#httpServletRequest.requestURI.endsWith('false')} ? 'adminclass'" th:href="@{|/venuelist/outdoor/${false}|}">
     <span>no</span>
 </a>
-<a class="buttonLook outdoor" th:href="@{/venuelist}">
+<a class="baseclass" th:classappend="${#httpServletRequest.requestURI.endsWith('venuelist')} ? 'adminclass'" th:href="@{/venuelist}">
     <span>all</span>
 </a>
 <ul>
