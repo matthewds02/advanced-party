@@ -38,6 +38,13 @@ public class VenueController {
         return "venuelist";
     }
 
+    /*@GetMapping("/venuelist/{antwoord}")
+    public String venueList(Model model, @PathVariable(required = false) String antwoord) {
+        Iterable<Venue> allVenues = venueRepository.findAll();
+        model.addAttribute("venues", allVenues);
+        return "venuelist";
+    }*/
+
     @GetMapping("/venuelist/outdoor/{antwoord}")
     public String venueListOutdoorYesNo(Model model, @PathVariable boolean antwoord) {
         Iterable<Venue> venues = venueRepository.findByOutdoor(antwoord);
