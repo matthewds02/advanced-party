@@ -59,8 +59,3 @@ a {
 .textbeforebutton {
     display: inline;
 }
-
-#textindoorbutton::before {
-    content: "\a";
-    white-space: pre;
-}

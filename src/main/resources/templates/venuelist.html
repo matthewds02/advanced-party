@@ -21,26 +21,45 @@
     <span>all</span>
 </a>-->
 
-<p class="textbeforebutton">outdoor: </p>
-<a class="baseclass" th:classappend="${#httpServletRequest.requestURI.endsWith('outdoor/true')} ? 'adminclass'" th:href="@{|/venuelist/outdoor/${true}|}">
-    <span>yes</span>
-</a>
-<a class="baseclass" th:classappend="${#httpServletRequest.requestURI.endsWith('outdoor/false')} ? 'adminclass'" th:href="@{|/venuelist/outdoor/${false}|}">
-    <span>no</span>
-</a>
-<a class="baseclass" th:classappend="${#httpServletRequest.requestURI.endsWith('venuelist')} ? 'adminclass'" th:href="@{/venuelist}">
-    <span>all</span>
-</a>
-<p id="textindoorbutton" class="textbeforebutton">indoor: </p>
-<a class="baseclass" th:classappend="${#httpServletRequest.requestURI.endsWith('indoor/true')} ? 'adminclass'" th:href="@{|/venuelist/indoor/${true}|}">
-    <span>yes</span>
-</a>
-<a class="baseclass" th:classappend="${#httpServletRequest.requestURI.endsWith('indoor/false')} ? 'adminclass'" th:href="@{|/venuelist/indoor/${false}|}">
-    <span>no</span>
-</a>
-<a class="baseclass" th:classappend="${#httpServletRequest.requestURI.endsWith('venuelist')} ? 'adminclass'" th:href="@{/venuelist}">
-    <span>all</span>
-</a>
+<div>
+    <p class="textbeforebutton">outdoor: </p>
+    <a class="baseclass" th:classappend="${#httpServletRequest.requestURI.endsWith('venuelist')} ? 'adminclass'" th:href="@{/venuelist}">
+        <span>all</span>
+    </a>
+    <a class="baseclass" th:classappend="${#httpServletRequest.requestURI.endsWith('outdoor/true')} ? 'adminclass'" th:href="@{|/venuelist/outdoor/${true}|}">
+        <span>yes</span>
+    </a>
+    <a class="baseclass" th:classappend="${#httpServletRequest.requestURI.endsWith('outdoor/false')} ? 'adminclass'" th:href="@{|/venuelist/outdoor/${false}|}">
+        <span>no</span>
+    </a>
+</div>
+<div>
+    <p class="textbeforebutton">indoor: </p>
+    <a class="baseclass" th:classappend="${#httpServletRequest.requestURI.endsWith('venuelist')} ? 'adminclass'" th:href="@{/venuelist}">
+        <span>all</span>
+    </a>
+    <a class="baseclass" th:classappend="${#httpServletRequest.requestURI.endsWith('indoor/true')} ? 'adminclass'" th:href="@{|/venuelist/indoor/${true}|}">
+        <span>yes</span>
+    </a>
+    <a class="baseclass" th:classappend="${#httpServletRequest.requestURI.endsWith('indoor/false')} ? 'adminclass'" th:href="@{|/venuelist/indoor/${false}|}">
+        <span>no</span>
+    </a>
+</div>
+<div>
+    <p class="textbeforebutton">size: </p>
+    <a class="baseclass" th:classappend="${#httpServletRequest.requestURI.endsWith('venuelist')} ? 'adminclass'" th:href="@{/venuelist}">
+        <span>all</span>
+    </a>
+    <a class="baseclass" th:classappend="${#httpServletRequest.requestURI.endsWith('size/S')} ? 'adminclass'" th:href="@{|/venuelist/size/S|}">
+        <span>S</span>
+    </a>
+    <a class="baseclass" th:classappend="${#httpServletRequest.requestURI.endsWith('size/M')} ? 'adminclass'" th:href="@{|/venuelist/size/M|}">
+        <span>M</span>
+    </a>
+    <a class="baseclass" th:classappend="${#httpServletRequest.requestURI.endsWith('size/L')} ? 'adminclass'" th:href="@{|/venuelist/size/L|}">
+        <span>L</span>
+    </a>
+</div>
 <ul>
     <div th:each="venue: ${venues}">
         <li>

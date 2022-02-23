@@ -41,8 +41,6 @@ public class VenueController {
     @GetMapping("/venuelist/outdoor/{antwoord}")
     public String venueListOutdoorYesNo(Model model, @PathVariable boolean antwoord) {
         Iterable<Venue> venues = venueRepository.findByOutdoor(antwoord);
-        String antwoordString = "" + antwoord;
-        model.addAttribute("antwoord1", antwoordString);
         model.addAttribute("venues", venues);
         return "venuelist";
     }
@@ -50,8 +48,22 @@ public class VenueController {
     @GetMapping("/venuelist/indoor/{antwoord}")
     public String venueListIndoorYesNo(Model model, @PathVariable boolean antwoord) {
         Iterable<Venue> venues = venueRepository.findByIndoor(antwoord);
-        String antwoordString = "" + antwoord;
-        model.addAttribute("antwoord2", antwoordString);
+        model.addAttribute("venues", venues);
+        return "venuelist";
+    }
+
+    @GetMapping("/venuelist/size/{antwoord}")
+    public String venueListSize(Model model, @PathVariable String antwoord) {
+        Iterable<Venue> venues;
+        if (antwoord.equals("all")) {
+            venues = venueRepository.findAll();
+        } else if (antwoord.equals("S")) {
+            venues = venueRepository.findByCapacityLessThanEqual(200);
+        } else if (antwoord.equals("M")) {
+            venues = venueRepository.findByCapacityIsBetween(200, 500);
+        } else {
+            venues = venueRepository.findByCapacityIsGreaterThan(500);
+        }
         model.addAttribute("venues", venues);
         return "venuelist";
     }
