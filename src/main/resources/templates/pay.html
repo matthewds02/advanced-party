@@ -12,10 +12,10 @@
 <body>
 <p th:text="${dateToday}">datum</p>
 <p th:text="${betaalDatum}">betaal datum</p>
-<div class="row1content" th:if="${weekend}">
+<div th:if="${weekend}">
     <p>Prettig weekend, je hebt het verdiend!</p>
 </div>
-<div class="row1content" th:unless="${weekend}">
+<div th:unless="${weekend}">
     <p>Voor je het weet is het weekend!</p>
 </div>
 </body>

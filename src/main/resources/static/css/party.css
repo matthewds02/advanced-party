@@ -59,3 +59,26 @@ a {
 .textbeforebutton {
     display: inline;
 }
+
+.row1content {
+    text-align: center;
+}
+
+.prevButtonDiv {
+    width: fit-content;
+    border: 1px solid blue;
+    margin-left: 50px;
+    float: left;
+}
+
+.nextButtonDiv {
+    width: fit-content;
+    border: 1px solid blue;
+    margin-right: 50px;
+    float: right;
+}
+
+.smallButton {
+    width: 50px;
+    padding: 0px 50px;
+}

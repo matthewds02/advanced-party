@@ -19,8 +19,20 @@ public class ArtistController {
     public String artistDetails(Model model, @PathVariable(required = false) Integer id) {
         if (id==null) return "artistdetails";
         Optional<Artist> optionalVenue = artistRepository.findById(id);
+        Optional<Artist> optionalPrev = artistRepository.findFirstByIdLessThanOrderByIdDesc(id);
+        Optional<Artist> optionalNext = artistRepository.findFirstByIdGreaterThanOrderById(id);
         if (optionalVenue.isPresent()) {
             model.addAttribute("artist", optionalVenue.get());
+        }
+        if (optionalPrev.isPresent()) {
+            model.addAttribute("prev", optionalPrev.get().getId());
+        } else {
+            model.addAttribute("prev", artistRepository.findFirstByOrderByIdDesc().get().getId());
+        }
+        if (optionalNext.isPresent()) {
+            model.addAttribute("next", optionalNext.get().getId());
+        } else {
+            model.addAttribute("next", artistRepository.findFirstByOrderByIdAsc().get().getId());
         }
         return "artistdetails";
     }
