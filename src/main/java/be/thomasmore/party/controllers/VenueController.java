@@ -47,36 +47,16 @@ public class VenueController {
     public String venueList(Model model) {
         Iterable<Venue> allVenues = venueRepository.findAll();
         model.addAttribute("venues", allVenues);
+        model.addAttribute("count", venueRepository.count());
         return "venuelist";
     }
 
-    @GetMapping("/venuelist/outdoor/{antwoord}")
-    public String venueListOutdoorYesNo(Model model, @PathVariable boolean antwoord) {
-        Iterable<Venue> venues = venueRepository.findByOutdoor(antwoord);
-        model.addAttribute("venues", venues);
-        return "venuelist";
-    }
-
-    @GetMapping("/venuelist/indoor/{antwoord}")
-    public String venueListIndoorYesNo(Model model, @PathVariable boolean antwoord) {
-        Iterable<Venue> venues = venueRepository.findByIndoor(antwoord);
-        model.addAttribute("venues", venues);
-        return "venuelist";
-    }
-
-    @GetMapping("/venuelist/size/{antwoord}")
-    public String venueListSize(Model model, @PathVariable String antwoord) {
-        Iterable<Venue> venues;
-        if (antwoord.equals("all")) {
-            venues = venueRepository.findAll();
-        } else if (antwoord.equals("S")) {
-            venues = venueRepository.findByCapacityLessThanEqual(200);
-        } else if (antwoord.equals("M")) {
-            venues = venueRepository.findByCapacityIsBetween(200, 500);
-        } else {
-            venues = venueRepository.findByCapacityIsGreaterThan(500);
-        }
-        model.addAttribute("venues", venues);
+    @GetMapping("/venuelist/filter")
+    public String filter(Model model){
+        Iterable<Venue> allVenues = venueRepository.findAll();
+        model.addAttribute("venues", allVenues);
+        model.addAttribute("showFilter", true);
+        model.addAttribute("count", venueRepository.count());
         return "venuelist";
     }
 }

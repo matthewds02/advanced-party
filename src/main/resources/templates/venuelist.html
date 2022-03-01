@@ -6,65 +6,36 @@
     <title>Homepagina</title>
 </head>
 <header>
-    <h1>Venues</h1>
+    <h1>Let's Party!</h1>
     <nav th:insert="fragments/header :: navbar">Hier komt de header</nav>
 </header>
 <body>
-<!--dit is mogelijk maar bij extra uitbreidingen krijg je een probleem dus kun je beter een parameter meegeven en gebruiken.
-<a class="baseclass" th:classappend="${#httpServletRequest.requestURI.endsWith('true')} ? 'adminclass'" th:href="@{|/venuelist/outdoor/${true}|}">
-    <span>yes</span>
-</a>
-<a class="baseclass" th:classappend="${#httpServletRequest.requestURI.endsWith('false')} ? 'adminclass'" th:href="@{|/venuelist/outdoor/${false}|}">
-    <span>no</span>
-</a>
-<a class="baseclass" th:classappend="${#httpServletRequest.requestURI.endsWith('venuelist')} ? 'adminclass'" th:href="@{/venuelist}">
-    <span>all</span>
-</a>-->
-
-<div>
-    <p class="textbeforebutton">outdoor: </p>
-    <a class="baseclass" th:classappend="${#httpServletRequest.requestURI.endsWith('venuelist')} ? 'adminclass'" th:href="@{/venuelist}">
-        <span>all</span>
-    </a>
-    <a class="baseclass" th:classappend="${#httpServletRequest.requestURI.endsWith('outdoor/true')} ? 'adminclass'" th:href="@{|/venuelist/outdoor/${true}|}">
-        <span>yes</span>
-    </a>
-    <a class="baseclass" th:classappend="${#httpServletRequest.requestURI.endsWith('outdoor/false')} ? 'adminclass'" th:href="@{|/venuelist/outdoor/${false}|}">
-        <span>no</span>
-    </a>
-</div>
-<div>
-    <p class="textbeforebutton">indoor: </p>
-    <a class="baseclass" th:classappend="${#httpServletRequest.requestURI.endsWith('venuelist')} ? 'adminclass'" th:href="@{/venuelist}">
-        <span>all</span>
-    </a>
-    <a class="baseclass" th:classappend="${#httpServletRequest.requestURI.endsWith('indoor/true')} ? 'adminclass'" th:href="@{|/venuelist/indoor/${true}|}">
-        <span>yes</span>
-    </a>
-    <a class="baseclass" th:classappend="${#httpServletRequest.requestURI.endsWith('indoor/false')} ? 'adminclass'" th:href="@{|/venuelist/indoor/${false}|}">
-        <span>no</span>
-    </a>
-</div>
-<div>
-    <p class="textbeforebutton">size: </p>
-    <a class="baseclass" th:classappend="${#httpServletRequest.requestURI.endsWith('venuelist')} ? 'adminclass'" th:href="@{/venuelist}">
-        <span>all</span>
-    </a>
-    <a class="baseclass" th:classappend="${#httpServletRequest.requestURI.endsWith('size/S')} ? 'adminclass'" th:href="@{|/venuelist/size/S|}">
-        <span>S</span>
-    </a>
-    <a class="baseclass" th:classappend="${#httpServletRequest.requestURI.endsWith('size/M')} ? 'adminclass'" th:href="@{|/venuelist/size/M|}">
-        <span>M</span>
-    </a>
-    <a class="baseclass" th:classappend="${#httpServletRequest.requestURI.endsWith('size/L')} ? 'adminclass'" th:href="@{|/venuelist/size/L|}">
-        <span>L</span>
-    </a>
-</div>
+<aside>
+    <p th:text="${count} + ' venues'">aantal</p>
+    <div th:if="${showFilter}">
+        <form>
+            <div >
+                <input type="submit" value="search">
+            </div>
+            <h3>capacity</h3>
+            <div>
+                <label for="minCapacity" >min</label>
+                <input type="number" id="minCapacity" name="minimumCapacity" value="0" step="50"> <span>persons</span>
+            </div>
+        </form>
+    </div>
+    <div th:unless="${showFilter}">
+        <a th:href="@{/venuelist/filter}">+</a>
+    </div>
+</aside>
+<h2>Venues</h2>
 <ul>
     <div th:each="venue: ${venues}">
         <li>
             <a class="buttonLook mediumButton" th:href="@{|/venuedetails/${venue.id}|}">
-                <span th:text="${venue.venueName}">venue name</span>
+                <span th:text="${venue.getVenueName()}">venue name</span>
+                <br>
+                <i th:text="'Capacity: '+${venue.getCapacity()}">Capacity</i>
             </a>
         </li>
     </div>
