@@ -8,9 +8,10 @@ import java.util.Optional;
 public interface VenueRepository extends CrudRepository<Venue, Integer> {
     Iterable<Venue> findByOutdoor(boolean isOutdoor);
     Iterable<Venue> findByIndoor(boolean isIndoor);
-    Iterable<Venue> findByCapacityLessThanEqual(int isSize);
-    Iterable<Venue> findByCapacityIsBetween(int isSize, int isSize2);
-    Iterable<Venue> findByCapacityIsGreaterThan(int isSize);
+    Iterable<Venue> findByCapacityLessThanEqual(int capacity);
+    Iterable<Venue> findByCapacityIsBetween(int min, int max);
+    Iterable<Venue> findByCapacityIsGreaterThan(int capacity);
+    Iterable<Venue> findByCapacityGreaterThanEqual(int capacity);
 
     Optional<Venue> findFirstByIdLessThanOrderByIdDesc(Integer id);
     Optional<Venue> findFirstByIdGreaterThanOrderById(Integer id);

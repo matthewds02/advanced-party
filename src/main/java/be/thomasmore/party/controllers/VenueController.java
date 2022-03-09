@@ -2,16 +2,23 @@ package be.thomasmore.party.controllers;
 
 import be.thomasmore.party.model.Venue;
 import be.thomasmore.party.repositories.VenueRepository;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestParam;
 
+import java.util.Collection;
 import java.util.Optional;
 
 @Controller
 public class VenueController {
+
+    private Logger logger = LoggerFactory.getLogger(VenueController.class);
+
     @Autowired
     private VenueRepository venueRepository;
 
@@ -52,11 +59,25 @@ public class VenueController {
     }
 
     @GetMapping("/venuelist/filter")
-    public String filter(Model model){
-        Iterable<Venue> allVenues = venueRepository.findAll();
+    public String filter(Model model, @RequestParam(required = false) Integer minimumCapacity,
+                         @RequestParam(required = false) Integer maximumCapacity){
+        Iterable<Venue> allVenues = null;
+        if (minimumCapacity!=null && maximumCapacity!=null) {
+            allVenues = venueRepository.findByCapacityIsBetween(minimumCapacity, maximumCapacity);
+        } else if(minimumCapacity!=null) {
+            allVenues = venueRepository.findByCapacityGreaterThanEqual(minimumCapacity);
+        } else if(maximumCapacity!=null) {
+            allVenues = venueRepository.findByCapacityLessThanEqual(maximumCapacity);
+        } else {
+            allVenues = venueRepository.findAll();
+        }
         model.addAttribute("venues", allVenues);
+        int nrVenues = ((Collection<Venue>) allVenues).size();
+        model.addAttribute("count", nrVenues);
+
         model.addAttribute("showFilter", true);
-        model.addAttribute("count", venueRepository.count());
+        model.addAttribute("minCapacity", minimumCapacity);
+        model.addAttribute("maxCapacity", maximumCapacity);
         return "venuelist";
     }
 }

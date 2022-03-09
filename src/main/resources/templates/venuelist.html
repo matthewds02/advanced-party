@@ -5,22 +5,27 @@
     <link rel="stylesheet" type="text/css" media="all" th:href="@{/css/party.css}" href="../static/css/party.css"/>
     <title>Homepagina</title>
 </head>
+<body>
 <header>
     <h1>Let's Party!</h1>
     <nav th:insert="fragments/header :: navbar">Hier komt de header</nav>
 </header>
-<body>
 <aside>
     <p th:text="${count} + ' venues'">aantal</p>
     <div th:if="${showFilter}">
+        <a th:href="@{/venuelist}">-</a>
         <form>
             <div >
                 <input type="submit" value="search">
             </div>
             <h3>capacity</h3>
-            <div>
-                <label for="minCapacity" >min</label>
-                <input type="number" id="minCapacity" name="minimumCapacity" value="0" step="50"> <span>persons</span>
+            <div class="onefilter">
+                <label for="minCapacity" class="filtername">min</label>
+                <input type="number" id="minCapacity" name="minimumCapacity" th:value="${minCapacity}" step="50"> <span>persons</span>
+            </div>
+            <div class="onefilter">
+                <label for="maxCapacity" class="filtername">max</label>
+                <input type="number" id="maxCapacity" name="maximumCapacity" th:value="${maxCapacity}" step="50"> <span>persons</span>
             </div>
         </form>
     </div>
