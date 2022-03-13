@@ -10,40 +10,42 @@
     <nav th:insert="fragments/header :: navbar">Hier komt de header</nav>
 </header>
 <body>
-<h2>artists</h2>
-<aside>
-    <div class="verticalmargin">
-        <span class="generalinfo" th:text="|${nrArtists} artists found|">0 artists found</span>
-    </div>
-    <div class="filters" th:if="${showFilter}">
+<div class="row2">
+    <div class="row2content">
+        <h2>artists</h2>
         <div class="verticalmargin">
-            <a th:href="@{/artistlist}" class="buttonLook filterButton">-</a>
+            <span class="generalinfo" th:text="|${nrArtists} artists found|">0 artists found</span>
         </div>
-        <form>
-            <div class="onefilter">
-                <input type="submit" value="search" class="buttonLook">
+        <div class="filters" th:if="${showFilter}">
+            <div class="verticalmargin">
+                <a th:href="@{/artistlist}" class="buttonLook filterButton">-</a>
             </div>
-            <div class="onefilter">
+            <form>
+                <div class="onefilter">
+                    <input type="submit" value="search" class="buttonLook">
+                </div>
+                <div class="onefilter">
                     <label for="keyword" class="filtername">keyword</label>
                     <input type="text" id="keyword" name="keyword" th:value="${keyword}">
-            </div>
-        </form>
-    </div>
-    <div class="filters" th:unless="${showFilter}">
-        <div class="verticalmargin">
-            <a th:href="@{/artistlist/filter}" class="buttonLook filterButton">+</a>
+                </div>
+            </form>
         </div>
+        <div class="filters" th:unless="${showFilter}">
+            <div class="verticalmargin">
+                <a th:href="@{/artistlist/filter}" class="buttonLook filterButton">+</a>
+            </div>
+        </div>
+        <ul class="list">
+            <div th:each="artist: ${artists}">
+                <li>
+                    <a class="buttonLook mediumButton" th:href="@{|/artistdetails/${artist.id}|}">
+                        <span th:text="${artist.getArtistName()}">venue name</span>
+                    </a>
+                </li>
+            </div>
+        </ul>
     </div>
-</aside>
-<ul>
-    <div th:each="artist: ${artists}">
-        <li>
-            <a class="buttonLook mediumButton" th:href="@{|/artistdetails/${artist.id}|}">
-                <span th:text="${artist.getArtistName()}">venue name</span>
-            </a>
-        </li>
-    </div>
-</ul>
+</div>
 </body>
 <footer th:insert="fragments/footer :: footer">Hier komt de footer</footer>
 </html>

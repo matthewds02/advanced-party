@@ -68,7 +68,7 @@
         <div th:unless="${showFilter}">
             <a th:href="@{/venuelist/filter}" class="buttonLook filterButton">+</a>
         </div>
-        <ul class="venuelist">
+        <ul class="list">
             <div th:each="venue: ${venues}">
                 <li>
                     <a class="buttonLook mediumButton" th:href="@{|/venuedetails/${venue.id}|}">
