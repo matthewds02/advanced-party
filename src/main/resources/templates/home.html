@@ -5,13 +5,13 @@
     <link rel="stylesheet" type="text/css" media="all" th:href="@{/css/party.css}" href="../static/css/party.css"/>
     <title>Homepagina</title>
 </head>
-<header>
-    <h1>Let's Party!</h1>
-    <nav th:insert="fragments/header :: navbar">Hier komt de header</nav>
-</header>
 <body>
+    <header>
+        <h1>Let's Party!</h1>
+        <nav th:insert="fragments/header :: navbar">Hier komt de header</nav>
+    </header>
     <h2>Homepage</h2>
     <img src="img/party.png" alt="party">
+    <footer th:insert="fragments/footer :: footer">Hier komt de footer</footer>
 </body>
-<footer th:insert="fragments/footer :: footer">Hier komt de footer</footer>
 </html>

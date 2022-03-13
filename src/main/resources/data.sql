@@ -1,7 +1,3 @@
-INSERT INTO client (id, client_name, birthdate, gender, startdate)
-VALUES (1, 'Matthew', '20/12/2002', 'M', '05/03/2022');
-
-
 insert into VENUE (
     ID, VENUE_NAME, LINK_MORE_INFO, CAPACITY,
     FOOD_PROVIDED, INDOOR, OUTDOOR, FREE_PARKING_AVAILABLE,
@@ -184,3 +180,89 @@ VALUES (
 Dreamville, MnM Start to Dj Finalist Flowtrack Summer Camp Casa Blanca
 Festival Sunrise Festival Red ''n Blue Café Local Noxx Publik Vice Festival
 KdG TD ...');
+
+
+INSERT INTO PARTY
+(ID, name, price_presale_in_eur, price_in_eur, extra_info, date, doors,
+ venue_Id)
+VALUES
+    (1, 'Big Spring Party', 6, 10, '1 cocktail included',
+     '2021-03-21', '10:00', 1);
+
+INSERT INTO PARTY
+(ID, name, price_presale_in_eur, price_in_eur, extra_info, date, doors,
+ venue_Id)
+VALUES
+    (2, 'Liberty 2021', 4, 6, 'free vestiaire, viplounge',
+     '2021-04-3', '22:00', 2);
+
+INSERT INTO PARTY
+(ID, name, price_presale_in_eur, price_in_eur, extra_info, date, doors,
+ venue_Id)
+VALUES
+    (3, 'Uppercuts', null, null, ' ',
+     '2021-03-14', '21:00', 4);
+
+INSERT INTO PARTY
+(ID, name, price_presale_in_eur, price_in_eur, extra_info, date, doors,
+ venue_Id)
+VALUES
+    (4, 'Zoetzuur', null, null, 'Zoete house / Zure techno',
+     '2021-03-21', '21:00', 4);
+
+INSERT INTO PARTY
+(ID, name, price_presale_in_eur, price_in_eur, extra_info, date, doors,
+ venue_Id)
+VALUES
+    (5, 'Oldies but Goldies', null, null, 'afterparty@home van THE BOX!',
+     '2020-03-28', '21:00', 4);
+
+
+INSERT INTO PARTY_ARTISTS (PARTIES_ID, ARTISTS_ID) VALUES (1, 1);
+INSERT INTO PARTY_ARTISTS (PARTIES_ID, ARTISTS_ID) VALUES (1, 2);
+INSERT INTO PARTY_ARTISTS (PARTIES_ID, ARTISTS_ID) VALUES (2, 2);
+INSERT INTO PARTY_ARTISTS (PARTIES_ID, ARTISTS_ID) VALUES (3, 3);
+INSERT INTO PARTY_ARTISTS (PARTIES_ID, ARTISTS_ID) VALUES (3, 5);
+INSERT INTO PARTY_ARTISTS (PARTIES_ID, ARTISTS_ID) VALUES (4, 5);
+
+
+INSERT INTO ANIMAL
+(ID, name, city, bio)
+VALUES
+    (1, 'Gillende Giraf', 'Antwerpen', 'Zit al gans mijn leven in de zoo van Antwerpen :-(');
+
+INSERT INTO ANIMAL
+(ID, name, city, bio)
+VALUES
+    (2, 'Olijke Olifant', 'Mechelen', 'Geboren en getogen Mechelenaar!');
+
+INSERT INTO ANIMAL
+(ID, name, city, bio)
+VALUES
+    (3, 'Dorstige Dromedaris', 'Mortsel', '');
+
+INSERT INTO ANIMAL
+(ID, name, city, bio)
+VALUES
+    (4, 'Dansende Draak', 'Lier', 'Van onder de Zimmertoren');
+
+INSERT INTO ANIMAL
+(ID, name, city, bio)
+VALUES
+    (5, 'Drinkende Das', 'Antwerpen', '');
+
+INSERT INTO ANIMAL
+(ID, name, city, bio)
+VALUES
+    (6, 'Klokkende Kikker', 'Berchem', '');
+
+
+INSERT INTO PARTY_ANIMALS (PARTIES_ID, ANIMALS_ID) VALUES (1, 1);
+INSERT INTO PARTY_ANIMALS (PARTIES_ID, ANIMALS_ID) VALUES (2, 1);
+INSERT INTO PARTY_ANIMALS (PARTIES_ID, ANIMALS_ID) VALUES (2, 3);
+INSERT INTO PARTY_ANIMALS (PARTIES_ID, ANIMALS_ID) VALUES (3, 3);
+INSERT INTO PARTY_ANIMALS (PARTIES_ID, ANIMALS_ID) VALUES (4, 3);
+INSERT INTO PARTY_ANIMALS (PARTIES_ID, ANIMALS_ID) VALUES (5, 3);
+INSERT INTO PARTY_ANIMALS (PARTIES_ID, ANIMALS_ID) VALUES (1, 4);
+INSERT INTO PARTY_ANIMALS (PARTIES_ID, ANIMALS_ID) VALUES (2, 4);
+INSERT INTO PARTY_ANIMALS (PARTIES_ID, ANIMALS_ID) VALUES (1, 5);
