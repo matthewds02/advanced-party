@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import java.util.Collection;
+import java.util.List;
 import java.util.Optional;
 
 @Controller
@@ -50,34 +50,35 @@ public class VenueController {
         return "venuedetails";
     }
 
-    @GetMapping("/venuelist")
+    @GetMapping({"/venuelist", "/venuelist/{something}"})
     public String venueList(Model model) {
         Iterable<Venue> allVenues = venueRepository.findAll();
         model.addAttribute("venues", allVenues);
-        model.addAttribute("count", venueRepository.count());
+        model.addAttribute("nrVenues", venueRepository.count());
         return "venuelist";
     }
 
     @GetMapping("/venuelist/filter")
     public String filter(Model model, @RequestParam(required = false) Integer minimumCapacity,
-                         @RequestParam(required = false) Integer maximumCapacity){
-        Iterable<Venue> allVenues = null;
-        if (minimumCapacity!=null && maximumCapacity!=null) {
-            allVenues = venueRepository.findByCapacityIsBetween(minimumCapacity, maximumCapacity);
-        } else if(minimumCapacity!=null) {
-            allVenues = venueRepository.findByCapacityGreaterThanEqual(minimumCapacity);
-        } else if(maximumCapacity!=null) {
-            allVenues = venueRepository.findByCapacityLessThanEqual(maximumCapacity);
-        } else {
-            allVenues = venueRepository.findAll();
-        }
-        model.addAttribute("venues", allVenues);
-        int nrVenues = ((Collection<Venue>) allVenues).size();
-        model.addAttribute("count", nrVenues);
-
-        model.addAttribute("showFilter", true);
-        model.addAttribute("minCapacity", minimumCapacity);
+                         @RequestParam(required = false) Integer maximumCapacity,
+                         @RequestParam(required = false) Double distance,
+                         @RequestParam(required = false) String foodProvided,
+                         @RequestParam(required = false) String indoor,
+                         @RequestParam(required = false) String outdoor){
+        List<Venue> venues = venueRepository.findByCapacityDistanceFoodIndoorOutdoor(
+                minimumCapacity, maximumCapacity, distance,
+                ((foodProvided==null || foodProvided.equals("all")) ? null : (foodProvided.equals("yes") ? true : false)),
+                ((indoor==null || indoor.equals("all")) ? null : (indoor.equals("yes") ? true : false)),
+                ((outdoor==null || outdoor.equals("all")) ? null : (outdoor.equals("yes") ? true : false)));
         model.addAttribute("maxCapacity", maximumCapacity);
+        model.addAttribute("minCapacity", minimumCapacity);
+        model.addAttribute("distance", distance);
+        model.addAttribute("foodProvided", foodProvided);
+        model.addAttribute("indoor", indoor);
+        model.addAttribute("outdoor", outdoor);
+        model.addAttribute("venues", venues);
+        model.addAttribute("nrVenues", venues.size());
+        model.addAttribute("showFilter", true);
         return "venuelist";
     }
 }
