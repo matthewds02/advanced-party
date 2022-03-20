@@ -136,4 +136,6 @@ input + .filtername {
     margin-bottom: 20px;
     display: block;
     width: 400px;
+    margin-left: auto;
+    margin-right: auto;
 }

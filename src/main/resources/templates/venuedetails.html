@@ -22,35 +22,20 @@
             <h2 th:text="${venue.getVenueName()}">Naam venue</h2>
         </div>
         <div>
-            <div class="info">Info : </div>
             <p>Info: <a th:href="${venue.getLinkMoreInfo()}">website</a></p>
             <p th:text="|Capacity: ${venue.getCapacity()}|"></p>
-            <div class="row1content" th:if="${venue.getfoodProvided()}">
-                <p>Food provided?: yes</p>
-            </div>
-            <div class="row1content" th:unless="${venue.getfoodProvided()}">
-                <p>Food provided?: no</p>
-            </div>
-            <div class="row1content" th:if="${venue.getindoor()}">
-                <p>Indoor?: yes</p>
-            </div>
-            <div class="row1content" th:unless="${venue.getindoor()}">
-                <p>Indoor?: no</p>
-            </div>
-            <div class="row1content" th:if="${venue.getoutdoor()}">
-                <p>Outdoor?: yes</p>
-            </div>
-            <div class="row1content" th:unless="${venue.getoutdoor()}">
-                <p>Outdoor?: no</p>
-            </div>
-            <div class="row1content" th:if="${venue.getfreeParkingAvailable()}">
-                <p>Free parking Available?: yes</p>
-            </div>
-            <div class="row1content" th:unless="${venue.getfreeParkingAvailable()}">
-                <p>Free parking Available?: no</p>
-            </div>
+            <div class="row1content"><p th:text="|Food provided?: ${venue.isFoodProvided() ? 'yes' : 'no'}"></p></div>
+            <div class="row1content"><p th:text="|Indoor?: ${venue.isIndoor() ? 'yes' : 'no'}"></p></div>
+            <div class="row1content"><p th:text="|Outdoor?: ${venue.isOutdoor() ? 'yes' : 'no'}"></p></div>
+            <div class="row1content"><p th:text="|Free parking Available?: ${venue.isFreeParkingAvailable() ? 'yes' : 'no'}"></p></div>
             <p th:text="|Distance Public Transport in km: ${venue.getDistanceFromPublicTransportInKm()}|"></p>
             <p th:text="|City: ${venue.getCity()}|"></p>
+            <h2 th:text="|parties in de ${venue.venueName}|">parties</h2>
+            <div class="row1content" th:each="party, status: ${parties}">
+                <a class="buttonLook mediumButton" th:href="@{'/partydetails/' + ${party.id}}">
+                    <span th:text="${party.getName()}">Naam party</span>
+                </a>
+            </div>
         </div>
     </div>
     <div class="row1content" th:unless="${venue}">

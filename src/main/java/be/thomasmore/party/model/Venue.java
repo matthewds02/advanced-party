@@ -19,14 +19,7 @@ public class Venue {
 
     public Venue(String venueName, String linkMoreInfo) {
         this.venueName = venueName;
-        this.linkMoreInfo = "https://www.youtube.com/watch?v=cFD9KnwQgQY";
-        this.capacity = 100;
-        this.foodProvided = true;
-        this.indoor = true;
-        this.outdoor = false;
-        this.freeParkingAvailable = false;
-        this.distanceFromPublicTransportInKm = 1.0;
-        this.city = "Antwerpen";
+        this.linkMoreInfo = linkMoreInfo;
     }
 
     public Venue() {
@@ -56,27 +49,55 @@ public class Venue {
         return capacity;
     }
 
-    public boolean getfoodProvided() {
+    public void setCapacity(int capacity) {
+        this.capacity = capacity;
+    }
+
+    public boolean isFoodProvided() {
         return foodProvided;
     }
 
-    public boolean getindoor() {
+    public void setFoodProvided(boolean foodProvided) {
+        this.foodProvided = foodProvided;
+    }
+
+    public boolean isIndoor() {
         return indoor;
     }
 
-    public boolean getoutdoor() {
+    public void setIndoor(boolean indoor) {
+        this.indoor = indoor;
+    }
+
+    public boolean isOutdoor() {
         return outdoor;
     }
 
-    public boolean getfreeParkingAvailable() {
+    public void setOutdoor(boolean outdoor) {
+        this.outdoor = outdoor;
+    }
+
+    public boolean isFreeParkingAvailable() {
         return freeParkingAvailable;
+    }
+
+    public void setFreeParkingAvailable(boolean freeParkingAvailable) {
+        this.freeParkingAvailable = freeParkingAvailable;
     }
 
     public String getCity() {
         return city;
     }
 
+    public void setCity(String city) {
+        this.city = city;
+    }
+
     public double getDistanceFromPublicTransportInKm() {
         return distanceFromPublicTransportInKm;
+    }
+
+    public void setDistanceFromPublicTransportInKm(double distanceFromPublicTransportInKm) {
+        this.distanceFromPublicTransportInKm = distanceFromPublicTransportInKm;
     }
 }

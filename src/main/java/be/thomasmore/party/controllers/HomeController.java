@@ -37,6 +37,14 @@ public class HomeController {
         DayOfWeek d = now.getDayOfWeek();
         Boolean weekend = d == DayOfWeek.SATURDAY || d == DayOfWeek.SUNDAY;
         model.addAttribute("weekend", weekend);
+
+        /* school oplossing
+        LocalDateTime now = LocalDateTime.now();
+        DateTimeFormatter format = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+        model.addAttribute("now", now.format(format));
+        model.addAttribute("paydate", now.plusDays(30).format(format));
+        model.addAttribute("weekend", now.getDayOfWeek().equals(DayOfWeek.SATURDAY) || now.getDayOfWeek().equals(DayOfWeek.SUNDAY) ? true : false);
+        */
         return "pay";
     }
 }

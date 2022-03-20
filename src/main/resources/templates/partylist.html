@@ -6,27 +6,29 @@
     <title>Partylist</title>
 </head>
 <body>
-    <header>
-        <h1>Let's Party!</h1>
-        <nav th:insert="fragments/header :: navbar">Hier komt de header</nav>
-    </header>
-    <div>
-        <div class="row2">
-            <div class="row2content">
-                <h1>Parties</h1>
-                <div class="verticalmargin">
-                    <span class="generalinfo" th:text="|${nrParties} parties found|">0 parties found</span>
-                </div>
-                <div class="partylist collectionlist">
-                    <div th:each="party, status: ${parties}">
+<header>
+    <h1>Let's Party!</h1>
+    <nav th:insert="fragments/header :: navbar">Hier komt de header</nav>
+</header>
+<div>
+    <div class="row2">
+        <div class="row2content">
+            <h1>Parties</h1>
+            <div class="verticalmargin">
+                <span class="generalinfo" th:text="|${nrParties} parties found|">0 parties found</span>
+            </div>
+            <ul class="list">
+                <div th:each="party, status: ${parties}">
+                    <li>
                         <a class="buttonLook mediumButton" th:href="@{'/partydetails/' + ${party.id}}">
                             <span th:text="${party.getName()}">Naam party</span>
                         </a>
-                    </div>
+                    </li>
                 </div>
-            </div>
+            </ul>
         </div>
     </div>
-    <footer th:insert="fragments/footer :: footer">Hier komt de footer</footer>
+</div>
+<footer th:insert="fragments/footer :: footer">Hier komt de footer</footer>
 </body>
 </html>

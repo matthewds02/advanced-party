@@ -22,7 +22,6 @@
             <h2 th:text="${artist.getArtistName()}">Naam artist</h2>
         </div>
         <div>
-            <div class="info">Info : </div>
             <p>Info: <a th:href="${artist.getLinkMoreInfo()}">website</a></p>
             <p th:text="|Bio: ${artist.getBio()}|"></p>
             <p th:text="|Bio: ${artist.getGenre()}|"></p>
