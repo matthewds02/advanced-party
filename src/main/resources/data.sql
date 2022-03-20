@@ -1,3 +1,6 @@
+INSERT INTO client (id, client_name, birthdate, gender, startdate)
+VALUES (1, 'Matthew', '20/12/2002', 'M', '05/03/2022');
+
 insert into VENUE (
     ID, VENUE_NAME, LINK_MORE_INFO, CAPACITY,
     FOOD_PROVIDED, INDOOR, OUTDOOR, FREE_PARKING_AVAILABLE,
