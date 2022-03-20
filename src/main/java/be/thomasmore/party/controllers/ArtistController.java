@@ -1,6 +1,7 @@
 package be.thomasmore.party.controllers;
 
 import be.thomasmore.party.model.Artist;
+import be.thomasmore.party.model.Venue;
 import be.thomasmore.party.repositories.ArtistRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -21,9 +22,9 @@ public class ArtistController {
     private ArtistRepository artistRepository;
 
     @GetMapping("/artistlist")
-    public String venueList(Model model) {
-        Iterable<Artist> allArtists = artistRepository.findAll();
-        model.addAttribute("artists", allArtists);
+    public String artistList(Model model) {
+        Iterable<Artist> artists = artistRepository.findAll();
+        model.addAttribute("artists", artists);
         model.addAttribute("nrArtists", artistRepository.count());
         return "artistlist";
     }
@@ -42,11 +43,11 @@ public class ArtistController {
     @GetMapping({"/artistdetails", "/artistdetails/{id}"})
     public String artistDetails(Model model, @PathVariable(required = false) Integer id) {
         if (id==null) return "artistdetails";
-        Optional<Artist> optionalVenue = artistRepository.findById(id);
+        Optional<Artist> optionalArtist = artistRepository.findById(id);
         Optional<Artist> optionalPrev = artistRepository.findFirstByIdLessThanOrderByIdDesc(id);
         Optional<Artist> optionalNext = artistRepository.findFirstByIdGreaterThanOrderById(id);
-        if (optionalVenue.isPresent()) {
-            model.addAttribute("artist", optionalVenue.get());
+        if (optionalArtist.isPresent()) {
+            model.addAttribute("artist", optionalArtist.get());
         }
         if (optionalPrev.isPresent()) {
             model.addAttribute("prev", optionalPrev.get().getId());
@@ -60,6 +61,4 @@ public class ArtistController {
         }
         return "artistdetails";
     }
-
-
 }

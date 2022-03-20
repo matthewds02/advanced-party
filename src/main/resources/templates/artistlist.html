@@ -2,16 +2,13 @@
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" type="text/css" media="all" th:href="@{/css/party.css}" href="../static/css/party.css"/>
-    <title>Homepagina</title>
+    <title>Artist Overview</title>
+    <link rel="stylesheet" type="text/css" media="all" th:href="@{/css/party.css}" href="/css/party.css" />
 </head>
-<header>
-    <h1>Artists</h1>
-    <nav th:insert="fragments/header :: navbar">Hier komt de header</nav>
-</header>
 <body>
-<div class="row2">
-    <div class="row2content">
+<div th:replace="fragments/headerfooter :: header">Hier komt de header</div>
+<div class="row1">
+    <div class="row1content">
         <h2>artists</h2>
         <div class="verticalmargin">
             <span class="generalinfo" th:text="|${nrArtists} artists found|">0 artists found</span>
@@ -35,17 +32,15 @@
                 <a th:href="@{/artistlist/filter}" class="buttonLook filterButton">+</a>
             </div>
         </div>
-        <ul class="list">
+        <div class="artistlist collectionlist">
             <div th:each="artist: ${artists}">
-                <li>
-                    <a class="buttonLook mediumButton" th:href="@{|/artistdetails/${artist.id}|}">
-                        <span th:text="${artist.getArtistName()}">venue name</span>
-                    </a>
-                </li>
+                <a class="buttonLook mediumButton" th:href="@{'/artistdetails/'+${artist.getId()}}">
+                    <span th:text="${artist.getArtistName()}">venue name</span>
+                </a>
             </div>
-        </ul>
+        </div>
     </div>
 </div>
+<div th:replace="fragments/headerfooter :: footer">Hier komt de footer</div>
 </body>
-<footer th:insert="fragments/footer :: footer">Hier komt de footer</footer>
 </html>

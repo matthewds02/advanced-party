@@ -2,16 +2,14 @@
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" type="text/css" media="all" th:href="@{/css/party.css}" href="../static/css/party.css"/>
+    <link rel="stylesheet" type="text/css" media="all" th:href="@{/css/party.css}"/>
     <title>Homepagina</title>
 </head>
 <body>
-    <header>
-        <h1>Let's Party!</h1>
-        <nav th:insert="fragments/header :: navbar">Hier komt de header</nav>
-    </header>
-    <h2>Homepage</h2>
-    <img src="img/party.png" alt="party">
-    <footer th:insert="fragments/footer :: footer">Hier komt de footer</footer>
+<div th:replace="fragments/headerfooter :: header">Hier komt de header</div>
+<div class="row1">
+    <img th:src="@{/img/party.png}" src="../static/img/party.png" alt="Party" height="888" width="1583"/>
+</div>
+<div th:replace="fragments/headerfooter :: footer">Hier komt de header</div>
 </body>
 </html>

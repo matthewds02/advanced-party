@@ -12,20 +12,19 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
 
 @Controller
 public class VenueController {
-
     private Logger logger = LoggerFactory.getLogger(VenueController.class);
-
-    @Autowired
-    private PartyRepository partyRepository;
     @Autowired
     private VenueRepository venueRepository;
+    @Autowired
+    private PartyRepository partyRepository;
 
-    @GetMapping({"/venuedetails", "/venuedetails/{id}"})
+    @GetMapping({"/venuedetails/{id}", "/venuedetails"})
     public String venueDetails(Model model, @PathVariable(required = false) Integer id) {
         if (id==null) return "venuedetails";
         Optional<Venue> optionalVenue = venueRepository.findById(id);
@@ -46,12 +45,6 @@ public class VenueController {
         } else {
             model.addAttribute("next", venueRepository.findFirstByOrderByIdAsc().get().getId());
         }
-
-        /* first one is to get data into website from database and 'data.sql'file
-           second one is to use hardcoded data from constructor in 'Venue.java' for the website
-        Venue venue = new Venue("VenueZonderNaam","www.venuezondernaam.org");
-        model.addAttribute("venue", venue);*/
-
         return "venuedetails";
     }
 
@@ -64,12 +57,13 @@ public class VenueController {
     }
 
     @GetMapping("/venuelist/filter")
-    public String filter(Model model, @RequestParam(required = false) Integer minimumCapacity,
-                         @RequestParam(required = false) Integer maximumCapacity,
-                         @RequestParam(required = false) Double distance,
-                         @RequestParam(required = false) String foodProvided,
-                         @RequestParam(required = false) String indoor,
-                         @RequestParam(required = false) String outdoor){
+    public String venueListWithFilter(Model model,
+                                      @RequestParam(required = false) Integer minimumCapacity,
+                                      @RequestParam(required = false) Integer maximumCapacity,
+                                      @RequestParam(required = false) Double distance,
+                                      @RequestParam(required = false) String foodProvided,
+                                      @RequestParam(required = false) String indoor,
+                                      @RequestParam(required = false) String outdoor) {
         List<Venue> venues = venueRepository.findByCapacityDistanceFoodIndoorOutdoor(
                 minimumCapacity, maximumCapacity, distance,
                 ((foodProvided==null || foodProvided.equals("all")) ? null : (foodProvided.equals("yes") ? true : false)),

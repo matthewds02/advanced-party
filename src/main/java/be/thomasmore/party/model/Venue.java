@@ -17,12 +17,12 @@ public class Venue {
     private String city;
     private double distanceFromPublicTransportInKm;
 
+    public Venue() {
+    }
+
     public Venue(String venueName, String linkMoreInfo) {
         this.venueName = venueName;
         this.linkMoreInfo = linkMoreInfo;
-    }
-
-    public Venue() {
     }
 
     public Integer getId() {
