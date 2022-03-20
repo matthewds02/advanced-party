@@ -21,7 +21,7 @@ public class ArtistController {
     private ArtistRepository artistRepository;
 
     @GetMapping("/artistlist")
-    public String venueList(Model model) {
+    public String artistList(Model model) {
         Iterable<Artist> allArtists = artistRepository.findAll();
         model.addAttribute("artists", allArtists);
         model.addAttribute("nrArtists", artistRepository.count());
@@ -42,11 +42,11 @@ public class ArtistController {
     @GetMapping({"/artistdetails", "/artistdetails/{id}"})
     public String artistDetails(Model model, @PathVariable(required = false) Integer id) {
         if (id==null) return "artistdetails";
-        Optional<Artist> optionalVenue = artistRepository.findById(id);
+        Optional<Artist> optionalArtist = artistRepository.findById(id);
         Optional<Artist> optionalPrev = artistRepository.findFirstByIdLessThanOrderByIdDesc(id);
         Optional<Artist> optionalNext = artistRepository.findFirstByIdGreaterThanOrderById(id);
-        if (optionalVenue.isPresent()) {
-            model.addAttribute("artist", optionalVenue.get());
+        if (optionalArtist.isPresent()) {
+            model.addAttribute("artist", optionalArtist.get());
         }
         if (optionalPrev.isPresent()) {
             model.addAttribute("prev", optionalPrev.get().getId());

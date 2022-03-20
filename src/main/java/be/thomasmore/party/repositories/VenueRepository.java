@@ -9,8 +9,8 @@ import java.util.List;
 import java.util.Optional;
 
 public interface VenueRepository extends CrudRepository<Venue, Integer> {
-    Optional<Venue> findFirstByIdLessThanOrderByIdDesc(Integer id);
-    Optional<Venue> findFirstByIdGreaterThanOrderById(Integer id);
+    Optional<Venue> findFirstByIdLessThanOrderByIdDesc(int id);
+    Optional<Venue> findFirstByIdGreaterThanOrderById(int id);
     Optional<Venue> findFirstByOrderByIdDesc();
     Optional<Venue> findFirstByOrderByIdAsc();
 

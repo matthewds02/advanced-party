@@ -9,8 +9,8 @@ import java.util.List;
 import java.util.Optional;
 
 public interface ArtistRepository extends CrudRepository<Artist, Integer> {
-    Optional<Artist> findFirstByIdLessThanOrderByIdDesc(Integer id);
-    Optional<Artist> findFirstByIdGreaterThanOrderById(Integer id);
+    Optional<Artist> findFirstByIdLessThanOrderByIdDesc(int id);
+    Optional<Artist> findFirstByIdGreaterThanOrderById(int id);
     Optional<Artist> findFirstByOrderByIdDesc();
     Optional<Artist> findFirstByOrderByIdAsc();
     @Query("SELECT a FROM Artist a WHERE :word IS NULL OR LOWER(a.artistName) LIKE LOWER(CONCAT('%',:word,'%')) OR LOWER(a.bio) LIKE LOWER(CONCAT('%',:word,'%')) " +
