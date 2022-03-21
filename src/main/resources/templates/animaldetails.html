@@ -3,12 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <title>Animal Details</title>
-    <link rel="stylesheet" type="text/css" media="all" th:href="@{/css/party.css}" href="/css/party.css" />
+    <link rel="stylesheet" type="text/css" media="all" th:href="@{/css/party.css}" href="../static/css/party.css">
 </head>
+<header>
+    <h1>venue details</h1>
+    <nav th:insert="fragments/header :: navbar">Hier komt de header</nav>
+</header>
 <body>
-<div th:replace="fragments/headerfooter :: header">Hier komt de header</div>
 <div class="row1">
-    <div class="row1content">
+    <div class="row1content" th:if="${animal}">
         <div th:if="${prev!=null}" class="prevButtonDiv">
             <a class="buttonLook smallButton" th:href="@{'/animaldetails/' + ${prev}}">&lt;</a>
         </div>
@@ -16,25 +19,29 @@
             <a class="buttonLook smallButton" th:href="@{'/animaldetails/' + ${next}}">&gt;</a>
         </div>
         <div>
-            <h2 th:if="${animal}" th:text="|animal: ${animal.name}|">animal: onbekend</h2>
-            <p th:unless="${animal}">animal: onbekend</p>
+            <h2 th:text="|animal: ${animal.name}|">animal: onbekend</h2>
         </div>
-        <div th:if="${animal}">
-            <div class="info">City : </div>
-            <div><p th:text="${animal.getCity()}">0</p></div><br>
-            <div class="info">Bio : </div>
-            <div><p th:text="${animal.getBio()}">no</p></div><br>
-            <div th:if="${animal.getParties().size()}>0" class="partylist collectionlist">
+        <div>
+            <p th:text="|City: ${animal.getCity()}|">0</p>
+            <p th:text="|Bio: ${animal.getBio()}|">no</p>
+            <div th:if="${animal.getParties().size()}>0">
                 <h2>going to</h2>
-                <div th:each="party: ${animal.getParties()}">
-                    <a class="buttonLook mediumButton" th:href="@{'/partydetails/'+${party.getId()}}">
-                        <span th:text="${party.getName()}">party name</span>
-                    </a>
-                </div>
+                <ul class="partyDetail">
+                    <div th:each="party: ${animal.getParties()}">
+                        <li>
+                            <a class="buttonLook mediumButton" th:href="@{'/partydetails/'+${party.getId()}}">
+                                <span th:text="${party.getName()}">party name</span>
+                            </a>
+                        </li>
+                    </div>
+                </ul>
             </div>
         </div>
     </div>
+    <div class="row1content" th:unless="${animal}">
+        <p>no animal was chosen</p>
+    </div>
 </div>
-<div th:replace="fragments/headerfooter :: footer">Hier komt de footer</div>
 </body>
+<footer th:insert="fragments/footer :: footer">Hier komt de footer</footer>
 </html>
