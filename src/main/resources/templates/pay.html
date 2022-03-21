@@ -2,13 +2,22 @@
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" type="text/css" media="all" th:href="@{/css/party.css}"/>
-    <title>Pay pagina</title>
+    <link rel="stylesheet" type="text/css" media="all" th:href="@{/css/party.css}" href="../static/css/party.css"/>
+    <title>Pay</title>
 </head>
+<header>
+    <h1>Pay</h1>
+    <nav th:insert="fragments/header :: navbar">Hier komt de header</nav>
+</header>
 <body>
-<p th:if="${weekend}">Prettig weekend, je hebt het verdiend!</p>
-<p th:unless="${weekend}">Voor je het weet is het weekend!</p>
-<p th:text="|De datum van vandaag is ${now}|"></p>
-<p th:text="|De uiterste datum van betalen is ${paydate}|"></p>
+<p th:text="${dateToday}">datum</p>
+<p th:text="${betaalDatum}">betaal datum</p>
+<div th:if="${weekend}">
+    <p>Prettig weekend, je hebt het verdiend!</p>
+</div>
+<div th:unless="${weekend}">
+    <p>Voor je het weet is het weekend!</p>
+</div>
 </body>
+<footer th:insert="fragments/footer :: footer">Hier komt de footer</footer>
 </html>

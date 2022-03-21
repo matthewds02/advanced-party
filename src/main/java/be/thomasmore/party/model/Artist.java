@@ -9,7 +9,7 @@ import java.util.Collection;
 @Entity
 public class Artist {
     @Id
-    private int id;
+    private Integer id;
     private String artistName;
     private String linkMoreInfo;
     private String genre;
@@ -25,6 +25,10 @@ public class Artist {
 
     public int getId() {
         return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getArtistName() {
@@ -65,13 +69,5 @@ public class Artist {
 
     public void setPortfolio(String portfolio) {
         this.portfolio = portfolio;
-    }
-
-    public Collection<Party> getParties() {
-        return parties;
-    }
-
-    public void setParties(Collection<Party> parties) {
-        this.parties = parties;
     }
 }

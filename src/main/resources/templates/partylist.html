@@ -1,29 +1,34 @@
 <!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-4.dtd">
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
-<link rel="stylesheet" type="text/css" media="all" th:href="@{/css/party.css}" href="/css/party.css" />
 <head>
     <meta charset="UTF-8">
-    <title>partylist</title>
+    <link rel="stylesheet" type="text/css" media="all" th:href="@{/css/party.css}" href="../static/css/party.css"/>
+    <title>Partylist</title>
 </head>
 <body>
-<div th:replace="fragments/headerfooter :: header">Hier komt de header</div>
+<header>
+    <h1>Let's Party!</h1>
+    <nav th:insert="fragments/header :: navbar">Hier komt de header</nav>
+</header>
 <div>
-    <div class="row1">
-        <div class="row1content">
+    <div class="row2">
+        <div class="row2content">
             <h1>Parties</h1>
             <div class="verticalmargin">
                 <span class="generalinfo" th:text="|${nrParties} parties found|">0 parties found</span>
             </div>
-            <div class="partylist collectionlist">
+            <ul class="list">
                 <div th:each="party, status: ${parties}">
-                    <a class="buttonLook mediumButton" th:href="@{'/partydetails/' + ${party.id}}">
-                        <span th:text="${party.getName()}">Naam party</span>
-                    </a>
+                    <li>
+                        <a class="buttonLook mediumButton" th:href="@{'/partydetails/' + ${party.id}}">
+                            <span th:text="${party.getName()}">Naam party</span>
+                        </a>
+                    </li>
                 </div>
-            </div>
+            </ul>
         </div>
     </div>
 </div>
-<div th:replace="fragments/headerfooter :: footer">Hier komt de footer</div>
+<footer th:insert="fragments/footer :: footer">Hier komt de footer</footer>
 </body>
 </html>

@@ -1,158 +1,84 @@
 body {
-    background-color: #D0CFEC;
-    color: #4c6c5d;
-    font-family: Bahnschrift, sans-serif;
-    margin: 0;
+    background-color: black;
+    color: blue;
+}
+header {
+    background-color: #6f9324;
+    padding-bottom: 20px;
+    padding-left: 20px;
+    margin-bottom: 20px;
+}
+nav a{
+    background-color: #526c19;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+}
+nav a:hover {
+    background-color: #ddd;
+    color: black;
+}
+ul {
+    list-style-type:none;
 }
 
-h1 {
-    margin: 20px 40px;
-    text-align: left;
-    font-size: 4em;
-}
-
-h2 {
-    margin: 10px 0;
-    font-size: 2em;
-}
-
-h3 {
-    margin: 10px 0;
-}
-
-.onefilter + h3 {
-    margin-bottom: 0;
+footer {
+    font-size: 10px;
+    position: fixed;
+    bottom: 0;
+    width: 80%;
 }
 
 a {
     text-decoration: none;
+    color: blue;
 }
 
-/* header with title and navigation */
-.nav {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    z-index: 10;
-    background-color: #6A8E7F;
-    color: #EDC7CF;
-    height: 150px;
+.baseclass {
+    display: inline-block;
+    background-color: #526c19;
+    margin-right: 10px;
+    padding: 10px;
+    margin-top: 10px;
 }
 
-.freespaceforheader {
-    margin: 150px 0 20px 0;
+.adminclass {
+    background-color: #abf506;
 }
 
-/*navigation buttons in header*/
-.navbuttons {
-    display: flex;
-}
-
-.row1 {
-    display: flex;
-    position: relative;
-    margin: 100px 0 20px 0;
-    min-height: 500px;
-}
-
-.row1 img {
-    width: 100%;
-    height: auto;
+.textbeforebutton {
+    display: inline;
 }
 
 .row1content {
-    flex-grow: 4;
-    margin: 0 50px;
-}
-
-/* links that look like buttons */
-.buttonLook {
-    background-color: #EDC7CF;
-    color: #6A8E7F;
-    text-decoration: none;
     text-align: center;
-    box-shadow: 1px 1px 1px darkgrey;
-}
-
-.buttonLook:hover {
-    background-color: #6A8E7F;
-    color: #EDC7CF;
-}
-
-.buttonLook:active {
-    background-color: #6A8E7F;
-    color: #EDC7CF;
-}
-
-.mediumButton {
-    display: block;
-    margin: 10px 40px;
-    width: 400px;
-    font-size: 1.2em;
-    padding: 1em;
-}
-
-.smallButton {
-    display: block;
-    font-size: 1em;
-    padding: 0.5em;
-}
-
-.menuButton {
-    display: block;
-    margin: 0 10px;
-    width: 6em;
-    padding: 0.2em;
-}
-
-.filterButton {
-    margin: 0 2px;
-    width: 2em;
-    padding: 0.2em;
 }
 
 .prevButtonDiv {
-    position: fixed;
-    left: 10px;
-    top: 160px;
+    width: fit-content;
+    border: 1px solid blue;
+    margin-left: 50px;
+    float: left;
 }
 
 .nextButtonDiv {
-    position: fixed;
-    right: 10px;
-    top: 160px;
+    width: fit-content;
+    border: 1px solid blue;
+    margin-right: 50px;
+    float: right;
 }
 
-.bottom {
-    background-color: #6A8E7F;
-    color: #EDC7CF;
-    height: 30px;
-    font-size: 0.7em;
-    position: fixed;
-    bottom: 0;
-    width: 100%;
+.smallButton {
+    background-color: black!important;
+    width: 50px;
+    padding: 0px 50px;
 }
 
-.bottom p {
-    margin-left: 40px;
-}
-
-div.info {
-    width: 240px;
-    display: inline-block;
-    margin-left: 20px;
-}
-
-div.info + div {
-    display: inline-block;
-}
-
-p { margin: 5px; }
-
-.activeFilter {
-    background-color: #f3a4b4;
-    color: #2b3e35;
+.row2 {
+    display: flex;
+    position: relative;
+    margin: 0 50px;
 }
 
 .filters {
@@ -160,8 +86,12 @@ p { margin: 5px; }
     float: left;
 }
 
+.list {
+    float: left;
+}
+
 .onefilter {
-    margin: 2px 0;
+    margin: 10px 0;
     display: flex;
 }
 
@@ -175,20 +105,37 @@ input + .filtername {
     width: 30px;
 }
 
-input + span {
-    margin-left: 5px;
+.filterButton {
+    padding: 0.2em;
 }
 
 .verticalmargin {
     margin: 8px 0;
 }
 
-.generalinfo {
-    font-size: 12px;
-    background-color: lightgoldenrodyellow;
-    padding: 1px 5px;
+.row2content {
+    flex-grow: 4;
+    margin: 0 50px;
 }
 
-.collectionlist {
-    float: left;
+.buttonLook {
+    background-color: #526c19;
+    color: blue;
+}
+
+.buttonLook:hover {
+    background-color: #ddd;
+    color: black;
+}
+
+.mediumButton {
+    background-color: #526c19;
+    text-align: center;
+    padding: 16px 16px;
+    font-size: 17px;
+    margin-bottom: 20px;
+    display: block;
+    width: 400px;
+    margin-left: auto;
+    margin-right: auto;
 }

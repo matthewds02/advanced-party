@@ -1,0 +1,41 @@
+https://thomasmore.instructure.com/courses/18435/quizzes/130743/take/questions/1157326
+5.5 van de bundel
+
+En nu ga je zelf aan de slag met wat we geleerd hebben. Maak deze oefening zeker af tegen volgende week, hetzij in de klas, hetzij thuis.
+
+Maak eerst al een branche 01_oefening op basis van de huidige 01_simplewebapp branche.
+
+Maak een klant Client (een POJO). Deze bevat als eigenschappen: id, name, birthdate, gender (M, F) en startdate. De eigenschap id zal later fungeren als primary key voor de overeenkomstige tabel.
+
+Schrijf een constructor met vier parameters voor name, birthdate, gender en startdate. De constructor mag alleen M of F aanvaarden voor de eigenschap gender.
+
+Schrijf ook een repository hiervoor en zorg ervoor dat een Client object in de H2-database wordt weggeschreven via data.sql.
+
+Schrijf een Controller voor Client en maak daarin een methode generateClientCode(). Dit is een gewone methode, geen request handler.
+Noot: dit is geen methode in de klasse Client, in een Entity klasse voegen we geen functionele methodes toe.
+
+De clientCode wordt gemaakt door de volgende concatenatie:
+de eerste twee letters van de naam, dan de laatste letter van de naam;
+gevolgd door de geboortedag (de dag van de maand);
+gevolgd door een random nummer tussen 1 en het geboortejaar.
+
+Maak een eerste request handler greetingNewClient(). Deze request handler haalt op basis van het id het Client object uit de database en roept dan de generateClientCode methode op om de clientcode te genereren. Tenslotte zorgt die ervoor dat in de template newClient de volgende begroeting wordt getoond.
+
+Goedemorgen mevrouw Peeters
+Deze begroeting wordt opgesteld als volgt.
+mevrouw bij gender F en meneer bij gender M;
+voor 12 uur ’s middags : goedemorgen;
+vanaf 12 uur tot 17 uur : goedemiddag;
+na 17 uur : goedenavond.
+
+Maak een tweede request handler showSecretCode(). Deze methode gaat eerst op basis van het id het Client object ophalen uit de database. In de template showSecretCode wordt de clientcode dan als volgt getoond.
+Mevrouw Peeters, uw secretcode is pes121956
+
+Indien de id niet bestaat, dan toon je in de template.
+deze klant kan niet gevonden worden
+
+Voeg tenslotte twee knoppen toe aan de navbar, zodat je het volgende verkrijgt.
+
+showsecretcode.png
+
+Commit en push als je klaar bent.

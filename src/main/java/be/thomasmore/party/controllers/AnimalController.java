@@ -1,7 +1,6 @@
 package be.thomasmore.party.controllers;
 
 import be.thomasmore.party.model.Animal;
-import be.thomasmore.party.model.Party;
 import be.thomasmore.party.repositories.AnimalRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
